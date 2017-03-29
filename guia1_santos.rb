@@ -1,9 +1,16 @@
 # -----EJERCICIOS PUESTOS EN METODOS -----
 
+def readkey
+	puts "Presione para ENTER para volver al menu"
+	gets.chomp
+	system "clear"
+end
+
+
 # *** EJERCICIO 1 ***
 def ej1
 	puts "Hola Mundo"
-	puts "Presione una tecla para volver al menu"
+	readkey
 end
 
 # *** EJERCICIO 2 ***
@@ -12,6 +19,7 @@ def ej2
 	nombre = gets.chomp
 	nombre.capitalize!
 	puts "Hola " + nombre
+	readkey
 end
 
 # *** EJERCICIO 3 ***
@@ -24,6 +32,7 @@ def ej3
 	else 
 		puts "Hola Usuario"
 	end
+	readkey
 end
 
 # *** EJERCICIO 4 ***
@@ -35,6 +44,7 @@ def ej4
 		result+=i
 	end
 	puts "La sumatoria de 1 a #{num} es: #{result}"
+	readkey
 end
 
 # *** EJERCICIO 5 ***
@@ -62,6 +72,7 @@ def ej5
 	#LLAMADA A FUNCION PARA CADA ARRAY DADO
 	recorrer(arreglo)
 	recorrer(arreglo2)
+	readkey
 end
 
 # *** EJERCICIO 6 ***
@@ -83,27 +94,29 @@ def ej6
 	#LLAMADA A FUNCION PARA CADA ARRAY DADO
 	recorrer(arreglo)
 	recorrer(arreglo2)
-	end
+	readkey
+end
 
 # *** EJERCICIO 7 ***
-	def ej7
-		puts "Ingrese un numero entero: "
-		num=gets.chomp
-		result=0
-		for i in 1..num.to_i
-			multiplo_3=i%3
-			multiplo_5=i%5
-			if multiplo_3==0 or multiplo_5==0
-				result+=i
-			end
+def ej7
+	puts "Ingrese un numero entero: "
+	num=gets.chomp
+	result=0
+	for i in 1..num.to_i
+		multiplo_3=i%3
+		multiplo_5=i%5
+		if multiplo_3==0 or multiplo_5==0
+			result+=i
 		end
-		puts "La sumatoria de multiplos de 3 o 5 en el rango 1 a #{num} es: #{result}"
+	end
+	puts "La sumatoria de multiplos de 3 o 5 en el rango 1 a #{num} es: #{result}"
+	readkey
 end
 
 # *** EJERCICIO 8 ***
 def ej8
-	a=[2,4,7,3,8,76,241,43,12,11]
 	bigger=-253000
+	a=10.times.map{ Random.rand(100) }
 	a.each do |item|
 		
 		if item>bigger
@@ -111,11 +124,27 @@ def ej8
 		end
 	end
 	puts "En al array #{a}, el numero mayor es: #{bigger}"
+	readkey
 end
 
 # *** EJERCICIO 9 ***
 def ej9
-
+	num_secreto=Random.rand(10)
+	intento=0
+	num_usuario=-1
+	while num_usuario.to_i != num_secreto do
+		intento+=1
+		#puts num_secreto
+		puts "Adivine el numero secreto!!! Ingrese un numero: "
+		num_usuario=gets.chomp
+		if num_usuario.to_i > num_secreto
+			puts "El numero elegido es mayor al numero secreto, intente nuevamente."
+		elsif num_usuario.to_i < num_secreto
+			puts "El numero elegido es menor al numero secreto, intente nuevamente."
+		end
+	end
+	puts "Felicitaciones! ha adivinado el numero secreto. Ud realizo #{intento} intentos."
+	readkey
 end
 
 
@@ -128,7 +157,7 @@ def principal
 
 # ---------CONSTRUCCION DEL MENU DE OPCIONES---------
 	while opcion != 0 do
-		#system(clear)
+		system "clear"
 		puts "*************************************"
 		puts "****      Guia 1 - Santos        ****"
 		puts "****    Menu de Ejercicios       ****"
@@ -166,9 +195,11 @@ def principal
 		when "9"
 		  ej9
 		when "0"
+		  system "clear"
 		  system(exit)
 		else
-		  puts "OPCION INVALIDA, PRESIONE UNA TECLA PARA VOLVER AL MENU"
+		  puts "OPCION INVALIDA"
+		  readkey
 		end
 	end
 end
