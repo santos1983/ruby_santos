@@ -10,7 +10,6 @@ get '/ej6' do
 		item.downcase
 		if item[0..1] == 'ba'
 			primera = item
-			#break
 		end
 	end
 	result.push "En #{arreglo} el primer elemento que comienza con 'ba' es: #{primera}<br>"
@@ -20,7 +19,6 @@ get '/ej6' do
 		item.downcase
 		if item[0..1] == 'ba'
 			primera2 = item
-			break
 		end
 	end
 	result.push "En #{arreglo2} el primer elemento que comienza con 'ba' es: #{primera2}"
